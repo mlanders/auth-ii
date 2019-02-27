@@ -76,7 +76,7 @@ server.post('/api/login', async (req, res) => {
 	}
 });
 
-server.get('/api/users', async (req, res) => {
+server.get('/api/users', restricted, async (req, res) => {
 	try {
 		const users = await db('users');
 		res.status(200).json({ message: 'Success', users });
