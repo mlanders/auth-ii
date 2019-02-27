@@ -5,15 +5,17 @@ const express = require('express');
 const helmet = require('helmet');
 const morgan = require('morgan');
 const cors = require('cors');
-const knex = require('knex');
-const knexConfig = require('./knexfile');
+// const knex = require('knex');
+// const knexConfig = require('./knexfile');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const { restricted } = require('./middleware/middleware');
 const secret = process.env.JWT_SECRET;
 
 const server = express();
-const db = knex(knexConfig.development);
+// const db = knex(knexConfig.development);
+
+const db = require('./db.js');
 
 server.use(helmet());
 server.use(cors());
