@@ -78,7 +78,7 @@ server.post('/api/login', async (req, res) => {
 
 server.get('/api/users', restricted, async (req, res) => {
 	try {
-		const users = await db('users');
+		const users = await db('users').select('id', 'username', 'department');
 		res.status(200).json({ message: 'Success', users });
 	} catch {
 		res.status(500).json({ message: 'Unexpected error' });
